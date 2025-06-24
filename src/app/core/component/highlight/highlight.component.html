@@ -1,0 +1,22 @@
+<!-- <div class="container">
+  <div class="page-container">
+    <label for="search-term">Search</label>
+    <input placeholder="Enter term" (input)="updateSearch($event)" id="search-term">
+    <div *ngFor="let result of results" [innerHTML]="result.summary | highlight: searchTerm"></div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container">
+  <label for="search-term">Search</label>
+  <input placeholder="Enter term" (input)="updateSearch($event)" id="search-term"><br>
+  {{'Sai' | append:'Janani'| append:'Murugan'}}
+</div>
+<br>
+<br> -->
+<div class="container">
+  <input placeholder="Enter name" [(ngModel)]="name">
+  <button (click)="Add()">Add</button>
+  <div *ngFor="let user of users | filter:'gender':'F'">{{user.name}}</div>
+</div>

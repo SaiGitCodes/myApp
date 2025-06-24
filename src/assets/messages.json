@@ -1,0 +1,20 @@
+{
+  "FIELD_REQUIRED": "This field is required",
+  "FIELD_INVALID": "This field is invalid",
+  "FIELD_DATA": "This data is invalid",
+  "INVALID_NAME": "Please enter a valid name",
+  "INVALID_EMAIL": "Please enter a valid email",
+  "INVALID_PASSWORD": "Please enter a valid Password",
+  "PASSWORD_MISMATCH": "Password does not match",
+  "EMAIL_EXISTS": "Email already exists",
+  "DATA_SAVED": "Data saved successfully",
+  "DATA_DELETE": "Data deleted successfully",
+  "DATA_UPDATED": "Data updated successfully",
+  "CANCEL": "Are you sure you want to cancel?",
+  "DELETE": "Are you sure you want to delete?",
+  "VERIFIED": "Verified",
+  "CORRECTION": "Needs Correction",
+  "GOTIT": "Got it!",
+  "NOTED": "Noted",
+  "ALERT": "Alert"
+}

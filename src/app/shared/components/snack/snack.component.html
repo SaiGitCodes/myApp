@@ -1,0 +1,7 @@
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between center">
+  <div><mat-icon>{{datas.symbol}}</mat-icon></div>
+  <div>{{datas.msg1}}</div>
+  <!-- <button mat-button matSnackBarAction
+    (click)="snackBarRef.dismissWithAction()"><mat-icon>{{datas.act}}</mat-icon></button> -->
+  <div><mat-icon (click)="snackBarRef.dismiss()">close</mat-icon></div>
+</div>

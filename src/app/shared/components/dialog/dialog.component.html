@@ -1,0 +1,25 @@
+<h5 mat-dialog-title>{{datass?.header}}</h5>
+<div *ngIf="datass?.header !== 'Error'" mat-dialog-content>
+  <div [innerHTML]="datass?.content"></div>
+</div>
+<div *ngIf="datass?.header === 'Error'" mat-dialog-content fxLayout="row" fxLayoutAlign="start center">
+  <svg fxFlex="15%" class="error.icon">
+    <use xlink:href="asserts/symbol-definition.svg#errors"></use>
+  </svg>
+  <p>{{datass?.content}}</p>
+</div>
+<!-- <mat-checkbox [(ngModel)]="checked">Don't show me again</mat-checkbox> -->
+<div mat-dialog-actions fxLayoutAlign="end end" fxLayoutGap="5px">
+  <ng-container *ngIf="datass?.actionType === 'Confirmation'">
+    <button mat-stroked-button color="primary" [mat-dialog-close]="false">No</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="onYes()">Yes</button>
+    <!-- <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="onYes()">Yes</button> -->
+
+  </ng-container>
+  <button mat-raised-button *ngIf="datass?.actionType === 'Message'" matDialogClose color="primary">Okay</button>
+  <button mat-raised-button *ngIf="datass?.actionType !== 'Confirmation' &&datass?.actionType!=='Message'"
+    matDialogClose color="primary">Close</button>
+  <!-- <input matInput
+    *ngIf="datass?.actionType === 'Field' && datass?.actionType!=='Confirmation' &&  datass?.actionType!=='Message'"> -->
+
+</div>

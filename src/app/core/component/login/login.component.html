@@ -1,0 +1,91 @@
+<!-- <div class="accin" fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="row">
+    <div fxLayout="column" fxFlex="40%"> Mail Id:</div>
+    <div fxLayout="column" fxFlex="60%"><input type="text" [(ngModel)]="mail"></div>
+  </div>
+    <div fxLayout="row">
+    <div fxLayout="column" fxFlex="40%"> Mail Id:</div>
+    <div fxLayout="column" fxFlex="60%"><input type="text" [(ngModel)]="mail"></div>
+  </div> -->
+<!-- Mail Id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" [(ngModel)]="mail"><br><br>
+Password:&nbsp;&nbsp;<input type="password" [(ngModel)]="password"><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Don't have an account?<button mat-button routerLink="/app/newacc">Create one!</button> -->
+<!--</div>-->
+
+
+
+<!-- normal -->
+<!-- <div class="accin">
+  Username:&nbsp;&nbsp;<input type="text" [(ngModel)]="mail"><br><br>
+  Password:&nbsp;&nbsp;<input type="password" [(ngModel)]="password"><br><br>
+  <button mat-raised-button routerLink="#">Login</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Don't have an account?<button mat-button routerLink="/app/newacc">Create one!</button>
+  </div> -->
+
+
+<!-- <div class="accin" fxLayout="column" fxLayoutAlign="center center" > 
+   
+    Username:<input type="text" [(ngModel)]="mail"><br><br>
+    Password:<input type="text"><br>
+    <button mat-raised-button routerLink="#">Login</button><br>
+    Don't have an account?<button mat-button routerLink="/app/newacc">Create one!</button>
+  </div> -->
+<!-- <div class="loginhead" fxLayout="row" fxLayoutAlign="center center">Login</div> -->
+<!-- <div fxLayout="row" fxLayoutAlign="center center" appLoginCardMargin>
+  <form [formGroup]="signinForm">
+  <div class="accin" fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row wrap">
+      <div fxLayout="column" fxFlex="40%"> Username</div>
+      <div fxLayout="column" fxFlex="60%"><input type="text"></div>
+    </div>
+    <div fxLayout="row wrap">
+      <div fxLayout="column" fxFlex="40%"> Password</div>
+      <div fxLayout="column" fxFlex="60%"><input type="text"></div>
+    </div>
+    <div fxLayout="row wrap">
+      <div fxLayout="column" fxFlex="30%"></div>
+      <div fxLayout="column" fxFlex="40%"><button mat-raised-button routerLink="/app/home">Login</button></div>
+      <div fxLayout="column" fxFlex="30%"></div>
+    </div>
+    <div fxLayout="row wrap">
+      <div fxLayout="column" fxFlex="60%">Don't have an account</div>
+      <div fxLayout="column" fxFlex="40%"><button mat-button routerLink="/app/newacc">Create one!</button></div>
+    </div>
+  </div>
+</form>
+</div> -->
+
+<div fxLayoutAlign="center center">
+  <h3 class="heading">LoginPage</h3>
+</div>
+<div fxLayout="row" fxLayoutAlign="center center" appLoginCardMargin>
+  <div class="outBox">
+    <form [formGroup]="signinForm">
+      <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+        <mat-label class="mailId" fxFlex="40%">Mail Id</mat-label>
+        <mat-form-field class="mailfield" fxFlex="60%" appearance="outline">
+          <input class="input" matInput formControlName="email">
+          <mat-error data-control="reqError" *ngIf="signinForm?.get('email')?.hasError('required')">
+            {{messages?.FIELD_REQUIRED}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+        <mat-label class="password" fxFlex="40%">Password</mat-label>
+        <mat-form-field class="passfield" fxFlex="60%" appearance="outline">
+          <input class="input" matInput type="password" formControlName="password">
+          <mat-error data-control="reqError" *ngIf="signinForm?.get('password')?.hasError('required')">
+            {{messages?.FIELD_REQUIRED}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayoutAlign="center center" fxLayout="column">
+        <!-- <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button> -->
+        <mat-container data-control="matError" *ngIf="error" style="color:red">
+          {{errorMessage}}
+        </mat-container>
+        <button mat-raised-button color="primary" (click)="signIn()">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

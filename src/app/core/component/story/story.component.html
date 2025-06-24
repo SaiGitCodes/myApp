@@ -1,0 +1,63 @@
+<!-- <div class="child" fxLayout="row" fxLayout.xs="column">
+  <div class="child-1">I'm the first Child</div>
+  <div class="child-2">I'm the second Child</div>
+  </div> -->
+
+<!-- <h1 *ngIf="displayname; else elseBlock">
+    The condition followed
+  </h1>
+
+  <ng-template #elseBlock>
+  <h1>The condition fails</h1>
+  </ng-template> -->
+<!-- <mat-toolbar> -->
+<!-- <div style="height: 100px;" fxLayout="row" fxLayoutAlign="center center"> -->
+<!-- <div fxLayout="column"> -->
+<!-- <div fxFlex="10%" style="background-color: blueviolet;">sds</div>
+  <div fxFlex="5%" style="background-color: rgb(64, 212, 215);">bhb</div>
+  <div fxFlex="5%" style="background-color: rgb(206, 70, 138);">nhy</div> -->
+
+<!-- </div> -->
+<!-- </div> -->
+<!-- </mat-toolbar> -->
+<div *ngIf="view; then thenBlock; else elseBlock"></div>
+
+<ng-template #thenBlock>
+  <h1>The condition followed</h1>
+</ng-template>
+
+
+<ng-template #elseBlock>
+  <h1>The condition fails</h1>
+</ng-template>
+
+<button (click)="onclick()">Select</button>
+<br>
+<br>
+<!-- <button routerLink="/app/story/login">Signin</button> -->
+<!-- <router-outlet></router-outlet> -->
+<div class="container">
+  <p>{{name | uppercase}}</p>
+  <p>{{name | lowercase}}</p>
+  <p>{{value | uppercase}}</p>
+  <p>{{value | lowercase}}</p>
+  <p>{{value | titlecase}}</p>
+  <p>{{value | slice:3}}</p>
+  <p>{{value | slice:3:5}}</p>
+  <p>{{details | json}}</p>
+  <p>{{1.234567 | number:'1.2-5'}}</p>
+  <p>{{1.23 | number:'3.2-5'}}</p>
+  <p>{{0.25 | percent}}</p>
+  <p>{{0.25 | currency:'GBP'}}</p>
+  <p>{{0.25 | currency:'GBP':'code'}}</p>
+  <p>{{0.25 | currency:'INR'}}</p>
+  <p>{{0.25 | currency:'INR':'code'}}</p>
+  <p>{{today}}</p>
+  <p>{{today | date:'M/d/yy, h:mm a'}}</p>
+  <p>{{today | date:'short'}}</p>
+</div>
+
+<div [ngClass]="isSpecial?'specialTrue':'specialFalse'">This is special class</div>
+<div [ngStyle]="currentStyles">this is a sentence with font styl italic,font weight bold and font size 24px</div>
+<div [ngStyle]="{color:'blue'}">this is a sentence with color blue</div>
+<div [ngStyle]="{'color': color? 'red' : 'purple'}">this is a sentence with color blue</div>

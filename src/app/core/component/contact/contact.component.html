@@ -1,0 +1,41 @@
+<!-- <br><br>
+<div fxLayoutAlign="center center" fxLayoutGap="10px">
+  <button mat-raised-button color="primary" (click)="Success()">Success</button>
+  <button mat-stroked-button (click)="Error()">Error</button>
+  <button mat-raised-button color="accent" (click)="Information()">Information</button>
+  <button mat-stroked-button (click)="Default()">Default</button>
+  <button mat-raised-button color="warn" (click)="Warning()">Warning</button>
+</div> -->
+
+<br><br>
+<div fxLayoutAlign="center center" fxLayoutGap="10px">
+  <button mat-raised-button color="primary" (click)="Success()">Success</button>
+  <button mat-stroked-button (click)="Error()">Error</button>
+  <button mat-raised-button color="accent" (click)="Information()">Information</button>
+  <button mat-stroked-button (click)="Default()">Default</button>
+  <button mat-raised-button color="warn" (click)="Warning()">Warning</button>
+</div>
+<br><br>
+<div fxLayoutAlign="center center" fxLayoutGap="50px">
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Horizontal position</mat-label>
+      <mat-select [(value)]="horizontalPosition">
+        <mat-option value="start">Start</mat-option>
+        <mat-option value="center">Center</mat-option>
+        <mat-option value="end">End</mat-option>
+        <mat-option value="left">Left</mat-option>
+        <mat-option value="right">Right</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Vertical position</mat-label>
+      <mat-select [(value)]="verticalPosition">
+        <mat-option value="top">Top</mat-option>
+        <mat-option value="bottom">Bottom</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

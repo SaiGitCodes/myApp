@@ -1,0 +1,295 @@
+<div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="end">
+  <div class="bi bi-pencil-square" id="boot-icon" fxLayoutAlign="end" (click)="onClick()">
+  </div>
+  <mat-icon class="des" (click)="onView()">description</mat-icon>
+</div>
+
+<div class="container">
+  <div class="page-container">
+
+    <!-- <form *ngIf="empregForm" [formGroup]="empregForm" (ngSubmit)="onSubmit(f)" #f="ngForm"> -->
+    <form *ngIf="empregForm" [formGroup]="empregForm">
+
+      <!-- FirstName and LastName -->
+      <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">First Name</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput formControlName="firstName">
+            <mat-error *ngIf="empregForm?.get('firstName')?.hasError('required')">{{messages?.FIELD_REQUIRED}}
+            </mat-error>
+            <mat-error data-control="reqvalid"
+              *ngIf="empregForm?.get('firstName')?.hasError('pattern')">{{messages?.FIELD_DATA}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Last Name</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput formControlName="lastName">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Email and Alternate Email -->
+      <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Email</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput formControlName="email">
+            <mat-error *ngIf="empregForm?.get('email')?.hasError('required')">{{messages?.FIELD_REQUIRED}}
+            </mat-error>
+            <mat-error data-control="reqvalid"
+              *ngIf="empregForm?.get('email').hasError('pattern')">{{messages?.FIELD_DATA}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Alternate Email</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput formControlName="alternateEmail">
+            <!-- <mat-error *ngIf="empregForm?.get('alternateEmail')?.value==empregForm?.get('email')?.value">Give different
+              Mail Id
+            </mat-error> -->
+            <mat-error *ngIf="empregForm?.get('alternateEmail').hasError('email')">{{messages?.FIELD_DATA}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Date Of Birth and Date Of Joining -->
+      <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Date Of Birth</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" [max]="today">
+            <mat-error
+              *ngIf="empregForm?.get('dateOfBirth').hasError('required') && !empregForm?.get('dateOfBirth').hasError('matDatepickerParse')">{{messages?.FIELD_REQUIRED}}
+            </mat-error>
+            <mat-error data-control="reqvalid"
+              *ngIf="empregForm?.get('dateOfBirth').hasError('matDatepickerParse')">{{messages?.FIELD_DATA}}
+            </mat-error>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Date of Joining</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput [matDatepicker]="picker2" formControlName="dateOfJoin"
+              [min]="empregForm?.get('dateOfBirth')?.value">
+            <mat-error
+              *ngIf="empregForm?.get('dateOfJoin').hasError('required') && !empregForm?.get('dateOfJoin').hasError('matDatepickerParse')">{{messages?.FIELD_REQUIRED}}
+            </mat-error>
+            <mat-error data-control="reqvalid"
+              *ngIf="empregForm?.get('dateOfJoin') .hasError('required') && empregForm?.get('dateOfJoin').hasError('matDatepickerParse')">{{messages?.FIELD_DATA}}
+            </mat-error>
+            <mat-error data-control="reqvalid"
+              *ngIf="empregForm?.get('dateOfJoin').hasError('matDatepickerMin')">Error</mat-error>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Start Date and End Date -->
+      <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Start Date</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput [matDatepicker]="picker3" formControlName="startDate" [max]="today">
+            <!-- <input matInput [matDatepicker]="picker" formControlName="startDate"> -->
+            <mat-error
+              *ngIf="empregForm?.get('startDate').hasError('required') && !empregForm?.get('startDate').hasError('matDatepickerParse')">{{messages?.FIELD_REQUIRED}}
+            </mat-error>
+            <!-- <mat-error
+              *ngIf="empregForm?.get('startDate').hasError('required') && empregForm?.get('startDate').hasError('matDatepickerParse')">Invalid
+              data!
+            </mat-error> -->
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">End Date</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput [matDatepicker]="picker4" formControlName="endDate"
+              [min]="empregForm?.get('startDate')?.value"
+              (dateChange)="onActiveValueChange(empregForm.value.actionstat)">
+            <!-- <input matInput [matDatepicker]="picker2" formControlName="endDate"> -->
+            <!-- <mat-error
+              *ngIf="empregForm?.get('endDate').hasError('required')">This
+              field is required!
+            </mat-error> -->
+            <!-- <mat-error
+              *ngIf="empregForm?.get('endDate') .hasError('required') && empregForm?.get('endDate').hasError('matDatepickerParse')">Invalid
+              data!
+            </mat-error> -->
+            <!-- <mat-error *ngIf="empregForm?.get('endDate').hasError('matDatepickerMin')">Error</mat-error> -->
+            <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+            <mat-datepicker #picker4></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Designation and Role -->
+      <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Designation</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <mat-select formControlName="designationId">
+              <mat-option [value]="item?.id" *ngFor="let item of Designation">{{item?.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Role</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <mat-select formControlName="roleId">
+              <mat-option [value]="items?.id" *ngFor="let items of Role">{{items?.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <!-- For Backend purpose -->
+      <!-- <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Status</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput formControlName="actionstat">
+            <mat-select color="primary" formControlName="actionstat"
+              (selectionChange)="onActiveValueChange($event?.value)">
+              <mat-option [value]="true">Active</mat-option>
+              <mat-option [value]="false">InActive</mat-option>
+            </mat-select>
+            <mat-error *ngIf="empregForm.get('actionstat')?.hasError('changeEndDate')">
+              Please give today date as end date
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column" *ngIf="clicked">
+          <mat-label fxFlex="40%">Nationality</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput formControlName="nationality">
+            <mat-error *ngIf="empregForm?.get('nationality').hasError('required')">{{messages?.FIELD_REQUIRED}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div> -->
+
+      <!-- Password Column -->
+      <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Password</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput formControlName="password">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+        </div>
+      </div>
+
+
+
+      <mat-divider></mat-divider>
+
+      <mat-radio-group fxLayout="row" fxLayoutAlign="start end" fxLayout.lt-md="column" fxLayoutGap.lt-sm="5px"
+        formControlName="isExternalApprover" (change)="onExternalApprover($event?.value)">
+        <mat-radio-button [value]="approver.internalApprover" color="accent">
+          Internal Manager
+        </mat-radio-button>
+        <mat-radio-button [value]="approver.externalApprover" color="accent">
+          External Manager
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px"
+        *ngIf="empregForm.value.isExternalApprover==approver.externalApprover">
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Manager Name</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput formControlName="managerName">
+            <mat-error *ngIf="empregForm?.get('managerName').hasError('required')">{{messages?.FIELD_REQUIRED}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Manager Email</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput formControlName="managerEmail">
+            <mat-error *ngIf="empregForm?.get('managerEmail').hasError('required')">{{messages?.FIELD_REQUIRED}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+      <div *ngIf="empregForm && getContacts().length > 0">
+        <div formArrayName="contacts">
+          <div fxLayout="row" fxLayoutAlign="start start" style="margin:20px 0 20px 0;">
+            <div class="page-heading">Contacts</div>
+          </div>
+          <div *ngFor="let item of getContacts(); let i=index">
+            <div [formGroupName]="i">
+              <div fxLayout="row" fxLayoutAlign="end center">
+                <mat-icon (click)="createArray()" class="form-array-icon">add_circle</mat-icon>
+                <mat-icon (click)="removeItem(i)" class="form-array-icon" *ngIf="i!==0">remove_circle_outline</mat-icon>
+              </div>
+              <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+                <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+                  <mat-label fxFlex="40%">Address</mat-label>
+                  <mat-form-field appearance="outline" fxFlex="60%">
+                    <input matInput formControlName="address">
+                    <mat-error *ngIf="getControls(empregForm,i).address?.hasError('required')">
+                      {{messages?.FIELD_REQUIRED}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+                  <mat-label fxFlex="40%">City</mat-label>
+                  <mat-form-field appearance="outline" fxFlex="60%">
+                    <input matInput formControlName="city">
+                    <mat-error *ngIf="getControls(empregForm,i).city?.hasError('required')">
+                      {{messages?.FIELD_REQUIRED}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div fxLayout="row" fxLayoutGap="5%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+                <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+                  <mat-label fxFlex="40%">State</mat-label>
+                  <mat-form-field appearance="outline" fxFlex="60%">
+                    <input matInput formControlName="state">
+                    <mat-error *ngIf="getControls(empregForm,i).state?.hasError('required')">
+                      {{messages?.FIELD_REQUIRED}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+                  <mat-label fxFlex="40%">Pincode</mat-label>
+                  <mat-form-field appearance="outline" fxFlex="60%">
+                    <input matInput formControlName="pincode">
+                    <mat-error *ngIf="getControls(empregForm,i).pincode?.hasError('required')">
+                      {{messages?.FIELD_REQUIRED}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <!-- <button mat-stroked-button color="primary" (click)="onReset()" type="reset">Reset</button> -->
+        <!-- <button mat-raised-button color="primary" type="submit">Submit</button> -->
+        <button mat-raised-button color="primary" data-control="clickTable"
+          (click)="onSubmit()">{{update?'Update':'Submit'}}</button>
+
+      </div>
+    </form>
+  </div>
+</div>

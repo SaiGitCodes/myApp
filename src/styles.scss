@@ -1,0 +1,107 @@
+// /* You can add global styles to this file, and also import other style files */
+// @use '@angular/material' as mat;
+// @import 'theme.scss';
+// @include mat.all-component-themes($app-theme);
+
+// // //define a mixin that accepts the theme and outputs the theme specified styles
+// @mixin theme-color-grabber($theme) {
+//   $primary: map-get($theme, primary);
+//   $accent: map-get($theme, accent);
+// }
+
+// //include themes for your custom components
+// @include theme-color-grabber($app-theme);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+  margin: 20px;
+}
+
+.page-container {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid rgb(184, 180, 180);
+}
+
+// .mdc-notched-outline {
+//   height: 70% !important;
+//   // width: 50% !important;
+// }
+.mat-mdc-form-field-infix {
+  min-height: 2px !important;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+}
+
+// error display
+.mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-error-wrapper {
+  padding: 0 !important;
+}
+
+// content display
+.mdc-text-field--outlined {
+  padding-left: 5px !important;
+}
+
+// datepicker
+// .mat-mdc-icon-button .mat-mdc-button-touch-target {
+//   // position: absolute;
+//   // top: 50%;
+//   // height: 48px;
+//   // left: 50%;
+//   // width: 48px;
+//   // transform: translate(-50%, -50%);
+//   height: 40px !important;
+//   width: 40px !important;
+// }
+
+.mdc-icon-button {
+  font-size: 31px !important;
+  width: 35px !important;
+  height: 31px !important;
+  padding: 0px !important;
+}
+
+// datepicker
+// .mat-mdc-form-field-icon-prefix,
+// .mat-mdc-form-field-icon-suffix {
+//   // align-self: center;
+//   line-height: 2px !important;
+//   // pointer-events: auto;
+// }
+.Success .mdc-snackbar__surface {
+  background-color: green !important;
+}
+
+.delete .mdc-snackbar__surface {
+  background-color: green !important;
+}
+
+.Error .mdc-snackbar__surface {
+  background-color: red !important;
+}
+
+.Warning .mdc-snackbar__surface {
+  background-color: yellow !important;
+}
+
+.Info .mdc-snackbar__surface {
+  background-color: blue !important;
+}
+
+.Default .mdc-snackbar__surface {
+  background-color: gray !important;
+}

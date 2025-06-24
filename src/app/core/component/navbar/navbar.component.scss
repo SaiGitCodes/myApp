@@ -1,0 +1,46 @@
+// .example-icon {
+//     padding: 0 14px;
+//   }
+
+//   .example-spacer {
+//     flex: 1 1 auto;
+//   }
+
+// .menu-spacer {
+//   flex: 1 1 auto;
+// }
+
+.menu-class {
+  //  background-color: aquamarine;
+  //margin-right: 500px;
+  flex: 1 1 auto;
+  display: flex;
+  // margin-left: 18px;
+  // margin-left: 200px;
+  // border:1px solid grey;
+  // position:relative;
+  // right:35%;
+}
+
+.navicons {
+  //right: 20px;
+  //margin-left:300px;
+  right: 16px;
+  position: absolute;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+    causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}

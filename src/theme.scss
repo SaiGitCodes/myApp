@@ -1,0 +1,74 @@
+/* For use in src/lib/core/theming/_palette.scss */
+@import '@angular/material/theming';
+@include mat-core();
+$custom-primary-color: (
+  50 : #e7fae7,
+  100 : #c3f3c2,
+  200 : #9bec9a,
+  300 : #73e471,
+  400 : #55de52,
+  500 : #37d834,
+  600 : #31d42f,
+  700 : #2ace27,
+  800 : #23c821,
+  900 : #16bf15,
+  A100 : #f0fff0,
+  A200 : #bdffbd,
+  A400 : #8aff8a,
+  A700 : #71ff70,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$custom-accent-color: (
+  50 : #f2e5fa,
+  100 : #dfbdf2,
+  200 : #c992ea,
+  300 : #b366e1,
+  400 : #a345da,
+  500 : #9324d4,
+  600 : #8b20cf,
+  700 : #801bc9,
+  800 : #7616c3,
+  900 : #640db9,
+  A100 : #f2e6ff,
+  A200 : #d6b3ff,
+  A400 : #bb80ff,
+  A700 : #ad67ff,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$custom-typography: mat-typography-config($font-family: "'Dancing Script', cursive",
+    $headline: mat-typography-level(32px, 48px, 700),
+    $body-1: mat-typography-level(16px, 24px, 500));
+@include angular-material-typography($custom-typography);
+$app-primary: mat-palette($custom-primary-color);
+$app-accent: mat-palette($custom-accent-color);
+$app-theme: mat-palette($app-primary, $app-accent);

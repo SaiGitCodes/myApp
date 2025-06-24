@@ -1,0 +1,146 @@
+<div class="container">
+  <app-tablechild [title]="title" [description]="description" [actionArray]="actionArray"
+    (actionEmit)="onEmit($event)"></app-tablechild>
+  <mat-form-field appearance="fill">
+    <mat-label class="filter">Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="search">
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <!-- <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container> -->
+
+      <!-- Name Column -->
+      <!-- <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container> -->
+
+      <!-- Department Column -->
+      <!-- <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+        <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+      </ng-container> -->
+
+      <!-- Designation Column -->
+      <!-- <ng-container matColumnDef="designation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Designation </th>
+        <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
+      </ng-container> -->
+
+      <!-- Office Location Column -->
+      <!-- <ng-container matColumnDef="officeLocation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Office Location </th>
+        <td mat-cell *matCellDef="let element"> {{element.officeLocation}} </td>
+      </ng-container> -->
+
+      <!--Status Column -->
+      <!-- <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container> -->
+
+      <!-- for getting data from backend -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- roleId Column -->
+      <ng-container matColumnDef="roleId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
+        <td mat-cell *matCellDef="let element"> {{element.role.name}} </td>
+      </ng-container>
+
+      <!-- designationId Column -->
+      <ng-container matColumnDef="designationId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Designation </th>
+        <td mat-cell *matCellDef="let element"> {{element.designation.name}} </td>
+      </ng-container>
+
+      <!-- firstName Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+      </ng-container>
+
+      <!-- lastName Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+      </ng-container>
+
+      <!-- email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <!-- alternateEmail Column -->
+      <ng-container matColumnDef="alternateEmail">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Alternate Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.alternateEmail}} </td>
+      </ng-container>
+
+      <!-- dateOfBirth Column -->
+      <ng-container matColumnDef="dateOfBirth">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Of Birth </th>
+        <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
+      </ng-container>
+
+      <!-- dateOfJoin Column -->
+      <ng-container matColumnDef="dateOfJoin">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Of Join </th>
+        <td mat-cell *matCellDef="let element"> {{element.dateOfJoin}} </td>
+      </ng-container>
+
+      <!--created Column -->
+      <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Created </th>
+        <td mat-cell *matCellDef="let element"> {{element.created}} </td>
+      </ng-container>
+
+      <!--modified Column -->
+      <ng-container matColumnDef="modified">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Modified </th>
+        <td mat-cell *matCellDef="let element"> {{element.modified}} </td>
+      </ng-container>
+
+      <!--Action Column -->
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon data-control="edit" (click)="onEdit(element)">edit</mat-icon>
+          <mat-icon data-control="delete" (click)="onDelete(element)">delete</mat-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row  ; columns: displayedColumns" (click)="onClickRow(row)"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>
+
+<!-- <ng-template #delete>
+  <h2 mat-dialog-title>Confirmation</h2>
+  <mat-dialog-content class="mat-typography">
+    <p>Are you sure you want to deleteee this record?</p>
+    <mat-checkbox [(ngModel)]="checked">Don't show me again</mat-checkbox>
+    <mat-dialog-actions align="end">
+      <button mat-stroked-button [mat-dialog-close]="false">No</button>
+      <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="onYes()">Yes</button>
+    </mat-dialog-actions>
+  </mat-dialog-content>
+</ng-template> -->

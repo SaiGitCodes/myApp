@@ -1,0 +1,55 @@
+<div class="home-container">
+  <mat-toolbar color="accent">
+    <mat-toolbar-row>
+      <!-- <div fxLayout="row" style="width:100%"> -->
+      <!-- <div fxFlex="20%"> -->
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <!-- <span>Angular</span> -->
+      <!-- </div> -->
+      <!-- <div fxFlex> -->
+      <!-- <span class="menu-spacer"></span> -->
+      <div fxLayoutAlign="center center" class="menu-class" fxShow="true" fxLayoutGap="40px" fxHide.lt-md>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a data-control="Observables" mat-button routerLink="/app/observables">Observables</a>
+        <a data-control="Pipes" mat-button routerLink="/app/highlight">Pipes</a>
+        <a data-control="Story" mat-button (click)="onNavigate()">Story</a>
+        <a data-control="ChangePassword" mat-button routerLink="/app/change-password">ChangePassword</a>
+        <a data-control="table" mat-button routerLink="/app/extable">Table</a>
+        <a data-control="form" mat-button routerLink="/app/FAQs">Form</a>
+        <a data-control="Snackbar" mat-button routerLink="/app/contact">Snackbar</a>
+        <a data-control="Loading" mat-button routerLink="/app/settings/department">Loading</a>
+        <a data-control="Logout" mat-button routerLink="/login">Log out</a>
+
+      </div>
+      <!-- <div class="navicons">
+        <button mat-icon-button routerLink="/app/login"><mat-icon>person</mat-icon></button>
+        <button mat-icon-button><mat-icon>shopping_cart</mat-icon></button>
+      </div> -->
+      <!-- </div> -->
+      <!-- </div> -->
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+        <a mat-list-item routerLink="/app/observables">Observables</a>
+        <a mat-list-item routerLink="/app/highlight">Pipes</a>
+        <a mat-list-item routerLink="/app/change-password">ChangePassword</a>
+        <a mat-list-item routerLink="/app/story">Story</a>
+        <a mat-list-item routerLink="/app/extable">Table</a>
+        <a mat-list-item routerLink="/app/FAQs">Form</a>
+        <a mat-list-item routerLink="/app/contact">Snackbar</a>
+        <a mat-list-item routerLink="/app/settings/department">Loading</a>
+        <a mat-list-item routerLink="/login">Log out</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- <app-footer>
+
+  </app-footer> -->
+</div>
